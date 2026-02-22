@@ -1,37 +1,31 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tecnologia para Todos | Inclusão Social</title>
+    <title>Tecnologia para Todos | Simone Steindorf</title>
     <style>
         :root {
-            --primary: #2563eb;
-            --secondary: #1e40af;
-            --text: #333;
-            --light: #f8fafc;
+            --primary: #0f172a;
+            --accent: #2563eb;
+            --success: #16a34a;
+            --bg: #f8fafc;
+            --white: #ffffff;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background-color: var(--bg);
             margin: 0;
-            line-height: 1.6;
-            color: var(--text);
-            background-color: var(--light);
+            color: #334155;
         }
 
         header {
             background: var(--primary);
             color: white;
-            padding: 2rem 1rem;
+            padding: 2.5rem 1rem;
             text-align: center;
-        }
-
-        nav {
-            background: #fff;
-            padding: 1rem;
-            text-align: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
         .container {
@@ -40,68 +34,236 @@
             padding: 0 1rem;
         }
 
-        .card {
-            background: white;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            margin-bottom: 2rem;
+        /* Estilo da Mídia */
+        .media-container {
+            margin: 20px 0;
+            text-align: center;
         }
 
-        h2 { color: var(--secondary); }
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
 
-        .btn {
-            display: inline-block;
-            background: var(--primary);
-            color: white;
-            padding: 0.8rem 1.5rem;
-            text-decoration: none;
-            border-radius: 5px;
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            /* Proporção 16:9 */
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+            background: #000;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Menu de Abas */
+        .tabs {
+            display: flex;
+            gap: 5px;
+            overflow-x: auto;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .tab-button {
+            padding: 12px 20px;
+            cursor: pointer;
+            background: #f1f5f9;
+            border: none;
+            border-radius: 8px 8px 0 0;
             font-weight: bold;
+            color: #64748b;
+            transition: 0.3s;
+            white-space: nowrap;
+        }
+
+        .tab-button.active {
+            background: var(--white);
+            color: var(--accent);
+            border-bottom: 3px solid var(--accent);
+        }
+
+        .tab-content {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 0 0 8px 8px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.4s;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Formulário */
+        .survey-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        input,
+        select,
+        textarea {
+            padding: 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .btn-submit {
+            background: var(--success);
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
         }
 
         footer {
             text-align: center;
-            padding: 3rem 1rem;
-            background: #333;
+            padding: 2rem;
+            background: var(--primary);
             color: white;
             margin-top: 4rem;
         }
 
-        .highlight { color: #60a5fa; font-weight: bold; }
+        .highlight {
+            color: #60a5fa;
+        }
     </style>
 </head>
+
 <body>
 
     <header>
         <h1>Tecnologia para Todos</h1>
-        <p>Conectando pessoas, transformando realidades.</p>
+        <p>Inclusão social através do conhecimento digital em 2026.</p>
     </header>
 
-    <nav>
-        <strong>Missão:</strong> Democratizar o acesso digital para uma sociedade mais justa.
-    </nav>
-
     <div class="container">
-        <section class="card">
-            <h2>Tecnologia e Inclusão</h2>
-            <p>Em 2026, acreditamos que o acesso à informação não é apenas uma conveniência, mas um <strong>direito fundamental</strong>. Nosso objetivo é quebrar as barreiras digitais que isolam comunidades e indivíduos.</p>
-        </section>
+        <div class="tabs">
+            <button class="tab-button active" onclick="openTab(event, 'inclusao')">Inclusão</button>
+            <button class="tab-button" onclick="openTab(event, 'educacao')">Educação</button>
+            <button class="tab-button" onclick="openTab(event, 'sociedade')">Sociedade</button>
+            <button class="tab-button" onclick="openTab(event, 'pesquisa')">Pesquisa</button>
+        </div>
 
-        <section class="card">
-            <h2>Nossos Pilares</h2>
-            <ul>
-                <li><strong>Acessibilidade:</strong> Interfaces pensadas para todos os tipos de usuários.</li>
-                <li><strong>Educação:</strong> Capacitação técnica para jovens e adultos.</li>
-                <li><strong>Conectividade:</strong> Expandir o alcance da rede para áreas remotas.</li>
-            </ul>
-        </section>
+        <div id="inclusao" class="tab-content active">
+            <h2>O que é Inclusão Digital?</h2>
+            <div class="media-container">
+                <img src="https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?auto=format&fit=crop&w=800"
+                    alt="Pessoas usando tecnologia">
+            </div>
+            <p>É o processo de democratização do acesso às tecnologias, permitindo que todos participem da era digital.
+                Em 2026, acreditamos que o acesso à informação não é apenas uma conveniência, mas um direito fundamental. Nosso objetivo
+                é quebrar as barreiras digitais que isolam comunidades e indivíduos.
+
+                <p>A inclusão da sociedade na tecnologia é um passo essencial para promover igualdade de oportunidades,
+                desenvolvimento social e crescimento econômico sustentável. Em um mundo cada vez mais digital, o acesso à internet, a
+                dispositivos eletrônicos e à capacitação tecnológica deixou de ser um diferencial e passou a ser uma necessidade básica.</p>
+
+                <p>A exclusão digital ainda é uma realidade para muitas comunidades em situação de vulnerabilidade. A falta de acesso à
+                tecnologia limita oportunidades de estudo, empregabilidade, empreendedorismo e participação ativa na sociedade. Por
+                isso, investir em inclusão digital significa abrir portas para o conhecimento, fortalecer a autonomia e reduzir
+                desigualdades sociais.</p>
+                
+                </p>Nosso compromisso é promover acesso à tecnologia por meio de capacitação, cursos, oficinas e projetos educativos que
+                desenvolvam habilidades digitais. Acreditamos que, ao oferecer ferramentas e conhecimento, estamos preparando pessoas
+                para o mercado de trabalho, incentivando o empreendedorismo e estimulando a inovação nas comunidades.</p>
+                
+                </p>A tecnologia transforma vidas quando é acessível a todos. Mais do que conectar pessoas à internet, queremos conectar
+                sonhos a oportunidades, criando um futuro mais justo, inclusivo e digital para todos.</p>
+
+            </p>
+        </div>
+
+        <div id="educacao" class="tab-content">
+            <h2>Caminhos Educacionais</h2>
+            <div class="media-container">
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+                </div>
+            </div>
+            <p>Capacitando pessoas com cursos de programação e segurança digital.</p>
+            <p>Capacitando pessoas com cursos de programação e segurança digital, promovemos mais do que aprendizado técnico —
+            promovemos autonomia, oportunidade e transformação social.</p>
+            <p>Acreditamos que a tecnologia é uma ferramenta poderosa de inclusão social. Ao preparar pessoas para o mercado digital,
+            ampliamos suas chances de empregabilidade, incentivamos o empreendedorismo e fortalecemos a confiança para enfrentar os
+            desafios do mundo moderno.</p>
+            <p></p>
+            <p>Investir em educação tecnológica é investir em futuro. É abrir portas para novas oportunidades e construir uma sociedade
+            mais segura, conectada e igualitária.</p>
+        </div>
+
+        <div id="sociedade" class="tab-content">
+            <h2>Impacto na Sociedade</h2>
+            <div class="media-container">
+                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800"
+                    alt="Comunidade colaborando">
+            </div>
+            <p>A tecnologia em 2026 é a maior ferramenta de mobilidade social para as periferias.</p>
+            <p>Nunca houve tantas oportunidades de aprender, empreender, trabalhar remotamente e gerar renda utilizando apenas um
+            celular, acesso à internet e conhecimento.</p>
+            <p></p>
+            <p>A tecnologia rompe barreiras geográficas, elimina limitações e conecta talentos da periferia ao mundo.</p>
+            <h2>O futuro é digital — e ele precisa ser inclusivo.</h2>
+        </div>
+
+        <div id="pesquisa" class="tab-content">
+            <h2>📊 Pesquisa de Comunidade</h2>
+            <form class="survey-form">
+                <label>Qual sua maior barreira tecnológica?</label>
+                <select>
+                    <option>Preço dos aparelhos</option>
+                    <option>Falta de sinal de internet</option>
+                    <option>Falta de cursos gratuitos</option>
+                </select>
+                <textarea rows="4" placeholder="Como podemos ajudar sua região?"></textarea>
+                <button type="button" class="btn-submit" onclick="alert('Enviado! Simone Steindorf agradece.')">Enviar
+                    Dados</button>
+            </form>
+        </div>
     </div>
 
     <footer>
-        <p>&copy; 2026 - Tecnologia para Todos</p>
-        <p>Desenvolvido por <span class="highlight">Simone Steindorf</span></p>
+        <p>&copy; 2026 - Tecnologia para Todos | <span class="highlight">Simone Steindorf</span></p>
     </footer>
 
+    <script>
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) { tabcontent[i].classList.remove("active"); }
+            tablinks = document.getElementsByClassName("tab-button");
+            for (i = 0; i < tablinks.length; i++) { tablinks[i].classList.remove("active"); }
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+    </script>
 </body>
+
 </html>
